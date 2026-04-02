@@ -23,18 +23,25 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
 
           script: |
+
             echo "Starting deployment..."
 
-            BACKUP_DIR="/var/www/html/public/backups/backup_$(date +%Y%m%d_%H%M%S)"
+            IST_TIME=$(TZ="Asia/Kolkata" date +%Y-%m-%d_%I-%M-%S_%p | tr 'A-Z' 'a-z')
+
+            BACKUP_DIR="/var/www/html/public/backups/backup_${IST_TIME}_ist"
+
+            echo "Creating backup at $BACKUP_DIR"
 
             mkdir -p $BACKUP_DIR
 
             cp -r /var/www/html/public/sample_project_repo/* $BACKUP_DIR/
 
-            cd sample_project_repo
+            echo "Backup completed successfully"
+
+            cd /var/www/html/public/sample_project_repo
+
+            echo "Pulling latest code from GitHub..."
 
             git pull origin main
 
-            sudo cp -r * /var/www/html/public/sample_project_repo/
-
-            echo "Deployment completed successfully"
+            echo "Deployment completed successfully at $IST_TIME"
