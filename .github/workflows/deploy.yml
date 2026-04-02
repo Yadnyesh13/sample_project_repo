@@ -11,12 +11,11 @@ jobs:
 
     steps:
 
-      - name: Checkout repository code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-
-      - name: Connect to EC2 and deploy code
-        uses: appleboy/ssh-action@master
+      - name: Deploy code to EC2
+        uses: appleboy/ssh-action@v1.0.3
 
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -24,5 +23,5 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
 
           script: |
-            cd index.html
+            cd sample_project_repo
             git pull origin main
