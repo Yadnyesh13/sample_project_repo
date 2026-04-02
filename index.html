@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Novacredinsurance</title>
   <style>
-    /* Yellow background, full-screen layout */
+    /* Light blue background, full-screen layout */
     html, body {
       height: 100%;
       margin: 0;
-      background:  bright yellow
+      background: lightblue; /* changed from bright yellow */
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       color: #000; /* black text for good contrast */
     }
@@ -27,15 +27,14 @@
     /* Large, responsive heading */
     h1 {
       margin: 0;
-      line-height: 1;
-      /* responsive size: grows with viewport but clamped */
+      line-height: 1.2;
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.15); /* subtle lift */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* slightly stronger shadow */
+      color: navy; /* heading color tweak */
     }
 
-    /* Small accessibility tweak for very small screens */
     @media (max-width: 360px) {
       h1 { font-size: 2.2rem; }
     }
@@ -43,7 +42,7 @@
 </head>
 <body>
   <div class="center" role="main">
-    <h1>Welcome to the Novacredinsurance</h1>
+    <h1>Welcome to Novacredinsurance</h1>
   </div>
 </body>
 </html>
