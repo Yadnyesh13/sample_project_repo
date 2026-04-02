@@ -23,6 +23,18 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
 
           script: |
+            echo "Starting deployment..."
+
+            BACKUP_DIR="/var/www/html/public/backups/backup_$(date +%Y%m%d_%H%M%S)"
+
+            mkdir -p $BACKUP_DIR
+
+            cp -r /var/www/html/public/sample_project_repo/* $BACKUP_DIR/
+
             cd sample_project_repo
+
             git pull origin main
+
             sudo cp -r * /var/www/html/public/sample_project_repo/
+
+            echo "Deployment completed successfully"
