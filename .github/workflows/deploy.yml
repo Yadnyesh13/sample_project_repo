@@ -25,3 +25,4 @@ jobs:
           script: |
             cd sample_project_repo
             git pull origin main
+            sudo cp -r * /var/www/html/public/sample_project_repo/
